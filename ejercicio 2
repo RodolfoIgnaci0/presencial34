@@ -1,0 +1,26 @@
+CREATE TABLE autor(
+id_autor SERIAL PRIMARY KEY,
+nombre VARCHAR(100)
+);
+
+CREATE TABLE articulo(
+id_articulo SERIAL PRIMARY KEY,
+nombre_art VARCHAR(50)
+);
+
+CREATE TABLE autor_articulo(
+id_autor REFERENCES autor(id_autor),
+id_articulo SERIAL REFERENCES articulo(id_articulo)
+);
+
+CREATE TABLE revista(
+id_revista SERIAL PRIMARY KEY,
+id_articulo SERIAL REFERENCES articulo(id_articulo)
+
+);
+
+CREATE TABLE categoria(
+id_categoria SERIAL PRIMARY KEY,
+id_revista SERIAL REFERENCES revista(id_revista)
+
+);

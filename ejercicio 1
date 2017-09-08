@@ -1,0 +1,46 @@
+CREATE TABLE camion(
+id_camion SERIAL,
+marca VARCHAR(50),
+patente VARCHAR(8),
+año integer,
+revision_tecnica date,
+PRIMARY KEY (id_camion)
+);
+
+CREATE TABLE conductor(
+id_conductor SERIAL PRIMARY KEY,
+id_camion SERIAL REFERENCES camion(id_camion),
+id_envio SERIAL REFERENCES envio(id_envio),
+nombre VARCHAR(100),
+rut VARCHAR(11),
+);
+
+CREATE TABLE envio(
+id_envio SERIAL PRIMARY KEY.
+id_paquete SERIAL REFERENCES paquete(id_paquete),
+descripcion VARCHAR(500),
+);
+
+CREATE TABLE paquete(
+id_paquete SERIAL PRIMARY KEY,
+descriopcion VARCHAR(500),
+);
+
+CREATE TABLE cliente(
+id_cliente SERIAL PRIMARY KEY,
+id_paquete SERIAL REFERENCES paquete(id_paquete),
+nombre VARCHAR(100),
+rut VARCHAR(11)
+);
+
+CREATE TABLE comuna(
+id_comuna SERIAL PRIMARY KEY,
+id_cliente SERIAL REFERENCES cliente(id_cliente),
+nombre VARCHAR(50)
+);
+
+CREATE TABLE ciudad(
+id_ciudad SERIAL PRIMARY KEY,
+id_comuna SERIAL REFERENCES comuna(id_comuna),
+nombre VARCHAR(50)
+);

@@ -1,0 +1,29 @@
+CREATE TABLE asignatura(
+id_asignatura SERIAL PRIMARY KEY,
+);
+
+CREATE TABLE profesor(
+id_profesor SERIAL PRIMARY KEY,
+id_asignatura SERIAL REFERENCES asignatura(id_asignatura)
+);
+
+CREATE TABLE aula(
+id_aula SERIAL PRIMARY KEY,
+id_asignatura SERIAL REFERENCES asignatura(id_asignatura)
+);
+
+
+CREATE TABLE alumno(
+id_alumno SERIAL PRIMARY KEY,
+
+);
+
+CREATE TABLE curso(
+id_curso SERIAL PRIMARY KEY,
+id_alumno SERIAL REFERENCES alumno(id_alumno)
+);
+
+CREATE TABLE curso_asig(
+id_curso SERIAL REFERENCES curso(id_curso),
+id_asignatura SERIAL REFERENCES asignatura(id_asignatura),
+);
